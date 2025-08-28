@@ -5,7 +5,7 @@ ARG ALPINE_VERSION
 ############################
 # Build tools binaries in separate image
 ############################
-ARG GO_VERSION=1.22.4
+ARG GO_VERSION=1.23.12
 FROM golang:${GO_VERSION}-alpine AS tools
 
 ENV TOOLS_VERSION 0.8.1
@@ -29,7 +29,7 @@ RUN rm -f $(pg_config --sharedir)/extension/timescaledb*mock*.sql
 ############################
 ARG PG_VERSION
 ARG ALPINE_VERSION
-FROM postgres:${PG_VERSION}-alpine${ALPINE_VERSION}
+FROM lcr.loongnix.cn/library/postgres:${PG_VERSION}-alpine${ALPINE_VERSION}
 ARG OSS_ONLY
 
 LABEL maintainer="Timescale https://www.timescale.com"
